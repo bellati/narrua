@@ -8,7 +8,7 @@
     <% @events.each do |e| %>
       <div class="event">
         <div class="ename"><%= e.name %></div>
-        <div class="einfo"><a href="#">info</a></div>
+        <div class="einfo"><%= link_to "info", event_path(e.id) %></div>
         <div class="esummary"><%= e.location + " - " + e.start_datetime.strftime("%Hh") %></div>
       </div>
     <% end %>

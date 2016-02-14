@@ -43,12 +43,12 @@ a:hover {
 }
 
 .container {
-  width: 70%;
+  width: 100%;
   margin: auto;
 }
 
 .events {
-  width: 60%;
+  width: 100%;
   margin: auto;
 }
 
@@ -90,5 +90,24 @@ a:hover {
   margin-top: 18px;
   letter-spacing: 1px;
   float: right;
+}
+
+/*@media(min-width: 0px) {
+  .container {
+    width: 100%;
+  }
+  .events {
+    width: 100%;
+  }
+}*/
+
+@media(min-width: 451px) {
+  .container {
+    width: 440px;
+  }
+
+  .events {
+    width: 440px;
+  }
 }
 

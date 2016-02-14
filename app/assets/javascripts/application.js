@@ -11,3 +11,16 @@
 // about supported directives.
 //
 //= require_tree .
+
+window.onload = function() {
+  var pathname = window.location.pathname.replace(/\//g, '');
+  switch (pathname) {
+    case "":
+    case "events": 
+      document.getElementById("nav-a-events").className += " active";
+      break;
+    case "eventssearch":
+      document.getElementById("nav-a-search").className += " active";
+      break;
+  }
+}

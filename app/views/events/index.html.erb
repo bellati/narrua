@@ -9,7 +9,7 @@
       <div class="event">
         <div class="ename"><%= e.name %></div>
         <div class="einfo"><a href="#">info</a></div>
-        <div class="eaddress"><%= e.address %></div>
+        <div class="esummary"><%= e.location + " - " + e.start_datetime.strftime("%Hh") %></div>
       </div>
     <% end %>
   </div>

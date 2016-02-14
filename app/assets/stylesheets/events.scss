@@ -33,7 +33,13 @@ h1 {
 }
 
 a {
+  text-decoration: none;
   color: #656565;
+  border-bottom: 1px solid #656565;
+}
+
+a:hover {
+  border-bottom: 1px solid #ffffff;
 }
 
 .container {

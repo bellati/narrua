@@ -1,16 +1,9 @@
-<div class="logo">
-    <h1>
-      na<div class="logo-backward">r</div>rua
-    </h1>
-  </div>
-<div class="container">
-  <div class="events">
-    <% @events.each do |e| %>
-      <div class="event">
-        <div class="ename"><%= e.name %></div>
-        <div class="einfo"><%= link_to "info", event_path(e.id) %></div>
-        <div class="esummary"><%= e.location + " - " + e.start_datetime.strftime("%Hh") %></div>
-      </div>
-    <% end %>
-  </div>
+<div class="events">
+  <% @events.each do |e| %>
+    <div class="event">
+      <div class="ename"><%= e.name %></div>
+      <div class="einfo"><%= link_to "info", event_path(e.id) %></div>
+      <div class="esummary"><%= e.location + " - " + e.start_datetime.strftime("%Hh") %></div>
+    </div>
+  <% end %>
 </div>

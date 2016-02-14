@@ -10,9 +10,9 @@
 }
 
 .logo {
-  margin: 40px auto 17px;
+  margin: 10px auto 0px;
   display: table;
-  width: 250px;
+  width: 100%;
   h1 {
     font-family: Helvetica, Arial, sans-serif;
     font-size: 80px;
@@ -20,27 +20,54 @@
     display: table-cell;
     vertical-align: middle;
     text-align: center;
-    padding: 5px 5px 20px 7px;
+    padding: 5px 5px 10px 7px;
     letter-spacing: -2px;
+
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
   }
 }
 
+ul {
+  list-style: none;
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  -webkit-padding-start: 0px;
+  padding-inline-start: 0px;
+}
+
+#nav {
+  width: 100%;
+  margin: auto;
+  text-align: right;
+}
+
+.nav-item {
+  margin-left: 20px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  text-transform: lowercase;
+  display: inline-block;
+  a {
+    text-decoration: none;
+    color: #000000;
+    border-bottom: 2px solid #000000;
+  }
+}
+
+.nav-item:first-child {
+  margin-left: 0px;
+}
+
 body {
-  background-color: #F2F2F2;
-}
-
-h1 {
-  text-align: center
-}
-
-a {
-  text-decoration: none;
-  color: #656565;
-  border-bottom: 1px solid #656565;
-}
-
-a:hover {
-  border-bottom: 1px solid #ffffff;
+  background-color: #ffffff;
 }
 
 .container {
@@ -66,7 +93,7 @@ a:hover {
 .ename {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: -1px;
   text-transform: lowercase;
   margin-top: 0.7em;
@@ -91,16 +118,17 @@ a:hover {
   margin-top: 15px;
   letter-spacing: 1px;
   float: right;
+  a {
+    text-decoration: none;
+    //color: #8F2C2C;
+    //border-bottom: 1px solid #8F2C2C;
+    color: #656565;
+    border-bottom: 1px solid #656565;
+  }
+  a:hover {
+    border-bottom: 1px solid #ffffff;
+  }
 }
-
-/*@media(min-width: 0px) {
-  .container {
-    width: 100%;
-  }
-  .events {
-    width: 100%;
-  }
-}*/
 
 @media(min-width: 451px) {
   .container {

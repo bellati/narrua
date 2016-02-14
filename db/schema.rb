@@ -19,8 +19,9 @@ ActiveRecord::Schema.define(version: 20160214035131) do
     t.string   "address"
     t.datetime "start_datetime"
     t.datetime "end_datetime"
-    t.integer  "price"
+    t.string   "price"
     t.integer  "attending"
+    t.text     "description"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end

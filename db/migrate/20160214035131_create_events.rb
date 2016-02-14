@@ -6,8 +6,9 @@ class CreateEvents < ActiveRecord::Migration
       t.string :address
       t.datetime :start_datetime
       t.datetime :end_datetime
-      t.integer :price
+      t.string :price
       t.integer :attending
+      t.text :description
 
       t.timestamps null: false
     end

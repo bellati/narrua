@@ -23,4 +23,6 @@ window.onload = function() {
       document.getElementById("nav-a-search").className += " active";
       break;
   }
+  //alert(document.referrer);
+  //window.history.back();
 }

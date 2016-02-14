@@ -2,6 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$font-default: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$color-wine: #8f2c2c;
+$color-black: #000000;
+$color-white: #ffffff;
+$color-grey: #656565;
+$background-color: $color-white;
+
 .logo-backward {
   display: inline-block;
   -moz-transform: scale(-1, 1); 
@@ -16,13 +23,12 @@
   h1 {
     font-family: Helvetica, Arial, sans-serif;
     font-size: 80px;
-    color: #000000;
+    color: $color-black;
     display: table-cell;
     vertical-align: middle;
     text-align: center;
     padding: 5px 5px 10px 7px;
     letter-spacing: -2px;
-
     -webkit-margin-before: 0em;
     -webkit-margin-after: 0em;
     -webkit-margin-start: 0px;
@@ -48,7 +54,7 @@ ul {
 
   .nav-item {
     margin-left: 20px;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: $font-default;
     font-size: 20px;
     font-weight: 700;
     letter-spacing: -1px;
@@ -56,15 +62,15 @@ ul {
     display: inline-block;
     a {
       text-decoration: none;
-      color: #000000;
+      color: $color-black;
       border-bottom: 2px solid transparent;
       transition: all 0.1s linear;
     }
     a.active {
-      border-bottom: 2px solid #000000;
+      border-bottom: 2px solid $color-black;
     }
     a:hover {
-      border-bottom: 2px solid #000000;
+      border-bottom: 2px solid $color-black;
     }
   }
   .nav-item:first-child {
@@ -75,7 +81,7 @@ ul {
 
 
 body {
-  background-color: #ffffff;
+  background-color: $background-color;
 }
 
 .container {
@@ -90,7 +96,7 @@ body {
 
 .event {
   line-height: 28px;
-  border-bottom: 1px solid #656565;
+  border-bottom: 1px solid $color-grey;
 }
 
 .event:last-child {
@@ -99,7 +105,7 @@ body {
 }
 
 .ename {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: $font-default;
   font-size: 20px;
   font-weight: 400;
   letter-spacing: -1px;
@@ -109,7 +115,7 @@ body {
 }
 
 .esummary {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: $font-default;
   font-size: 14px;
   font-weight: 200;
   letter-spacing: 1.0px;
@@ -120,7 +126,7 @@ body {
 }
 
 .einfo {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: $font-default;
   font-size: 12px;
   font-weight: 200;
   margin-top: 15px;
@@ -128,21 +134,20 @@ body {
   float: right;
   a {
     text-decoration: none;
-    //color: #8F2C2C;
-    //border-bottom: 1px solid #8F2C2C;
-    color: #656565;
-    border-bottom: 1px solid #656565;
+    color: $color-grey;
+    border-bottom: 1px solid $color-grey;
   }
   a:hover {
-    border-bottom: 1px solid #ffffff;
+    border-bottom: none;
   }
 }
 
-@media(min-width: 451px) {
-  .container {
-    width: 440px;
-  }
+.edescription {
+  @extend .esummary;
+  text-align: justify;
+}
 
+@media(min-width: 451px) {
   .events {
     width: 440px;
   }

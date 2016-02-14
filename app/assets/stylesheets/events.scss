@@ -33,7 +33,7 @@ h1 {
 }
 
 a {
-  color: black;
+  color: #656565;
 }
 
 .container {
@@ -53,7 +53,7 @@ a {
 
 .event:last-child {
   line-height: 28px;
-  border-bottom: 1px solid #FFFFFF;
+  border-bottom: 1px solid #ffffff;
 }
 
 .ename {
@@ -61,6 +61,7 @@ a {
   font-size: 25px;
   font-weight: 500;
   letter-spacing: -1px;
+  text-transform: lowercase;
   margin-top: 0.7em;
   display: inline-block;
 }
@@ -69,16 +70,18 @@ a {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 16px;
   font-weight: 200;
-  letter-spacing: 1.5px;
+  letter-spacing: 1.0px;
+  text-transform: lowercase;
+  color: #656565;
   margin-left: 2px;
   margin-bottom: 0.7em;
 }
 
 .einfo {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 17px;
+  font-size: 14px;
   font-weight: 200;
-  margin-top: 17px;
+  margin-top: 19px;
   letter-spacing: 1px;
   float: right;
 }

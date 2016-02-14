@@ -1,0 +1,85 @@
+// Place all the styles related to the Events controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// BEGIN LOGO
+.backward-letters {
+  display: inline-block;
+  -moz-transform: scale(-1, 1); 
+  -webkit-transform: scale(-1, 1);  
+  transform: scale(-1, 1);
+}
+
+.logo {
+  margin: 40px auto 17px;
+  display: table;
+  width: 250px;
+  background-color: #FFFFFF;
+  h1 {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 80px;
+    color: #000000;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    padding: 5px 5px 20px 7px;
+    letter-spacing: -2px;
+  }
+}
+// END LOGO
+
+h1 {
+  text-align: center
+}
+
+a {
+  color: black;
+}
+
+.container {
+  width: 70%;
+  margin: auto;
+}
+
+.events {
+  width: 60%;
+  margin: auto;
+}
+
+.event {
+  line-height: 28px;
+  border-bottom: 1px solid #656565;
+}
+
+.event:last-child {
+  line-height: 28px;
+  border-bottom: 1px solid #FFFFFF;
+}
+
+.ename {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 25px;
+  font-weight: 500;
+  letter-spacing: -1px;
+  margin-top: 0.7em;
+  display: inline-block;
+}
+
+.eaddress {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 200;
+  letter-spacing: 1.5px;
+  margin-left: 2px;
+  margin-bottom: 0.7em;
+}
+
+.einfo {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  font-weight: 200;
+  margin-top: 17px;
+  letter-spacing: 1px;
+  float: right;
+}
+

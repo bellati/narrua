@@ -9,32 +9,9 @@ $color-white: #ffffff;
 $color-grey: #656565;
 $background-color: $color-white;
 
-.logo-backward {
-  display: inline-block;
-  -moz-transform: scale(-1, 1); 
-  -webkit-transform: scale(-1, 1);  
-  transform: scale(-1, 1);
-}
-
 .logo {
-  margin: 10px auto 0px;
-  display: table;
-  width: 100%;
-  h1 {
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: 80px;
-    color: $color-black;
-    display: table-cell;
-    vertical-align: middle;
-    text-align: center;
-    padding: 5px 5px 10px 7px;
-    letter-spacing: -2px;
-    -webkit-margin-before: 0em;
-    -webkit-margin-after: 0em;
-    -webkit-margin-start: 0px;
-    -webkit-margin-end: 0px;
-    font-weight: bold;
-  }
+  text-align: center;
+  margin-top: 20px;
 }
 
 ul {
@@ -51,10 +28,8 @@ ul {
   width: 100%;
   margin: auto;
   text-align: right;
-
-  .nav-item {
+  li {
     margin-left: 20px;
-    font-family: $font-default;
     font-size: 20px;
     font-weight: 700;
     letter-spacing: -1px;
@@ -73,23 +48,27 @@ ul {
       border-bottom: 2px solid $color-black;
     }
   }
-  .nav-item:first-child {
+  li:first-child {
     margin-left: 0px;
   }
 }
 
-
+#li-go-back {
+  float: left;
+  a {
+    display: none;
+  }
+  a.show {
+    display: inline-block;
+  }
+}
 
 body {
+  font-family: $font-default;
   background-color: $background-color;
 }
 
-.container {
-  width: 100%;
-  margin: auto;
-}
-
-.events {
+#events {
   width: 100%;
   margin: auto;
 }
@@ -105,7 +84,6 @@ body {
 }
 
 .ename {
-  font-family: $font-default;
   font-size: 20px;
   font-weight: 400;
   letter-spacing: -1px;
@@ -115,7 +93,6 @@ body {
 }
 
 .esummary {
-  font-family: $font-default;
   font-size: 14px;
   font-weight: 200;
   letter-spacing: 1.0px;
@@ -126,7 +103,6 @@ body {
 }
 
 .einfo {
-  font-family: $font-default;
   font-size: 12px;
   font-weight: 200;
   margin-top: 15px;
@@ -148,7 +124,7 @@ body {
 }
 
 @media(min-width: 451px) {
-  .events {
+  #events {
     width: 440px;
   }
 }

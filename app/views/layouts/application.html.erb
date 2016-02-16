@@ -9,15 +9,14 @@
 </head>
 <body>
 
-<div class="events">
+<div id="events">
   <ul id="nav">
-    <li class="nav-item"><%= link_to Time.now.to_datetime.strftime("%d.%m"), events_path, id: "nav-a-events" %></a></li>
-    <li class="nav-item"><%= link_to "busca", search_path, id: "nav-a-search" %></li>
+    <li id="li-go-back"><a id="nav-a-go-back" href="#">voltar</a></li>
+    <li><%= link_to Time.now.to_datetime.strftime("%d.%m"), events_path, id: "nav-a-events" %></a></li>
+    <li><%= link_to "busca", search_path, id: "nav-a-search" %></li>
   </ul>
   <div class="logo">
-    <h1>
-      na<div class="logo-backward">r</div>rua
-    </h1>
+    <%= image_tag "narrua.png", { width: 200 } %>
   </div>
   <%= yield %>
 </div>

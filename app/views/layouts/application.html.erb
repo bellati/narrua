@@ -11,7 +11,7 @@
 
 <div id="events">
   <ul id="nav">
-    <li id="li-go-back"><a id="nav-a-go-back" href="#">voltar</a></li>
+    <li id="li-go-back"><%= link_to "voltar", events_path, id: "nav-a-go-back" %></li>
     <li><%= link_to Time.now.to_datetime.strftime("%d.%m"), events_path, id: "nav-a-events" %></a></li>
     <li><%= link_to "busca", search_path, id: "nav-a-search" %></li>
   </ul>

@@ -25,6 +25,4 @@ window.onload = function() {
     default:
       document.getElementById("nav-a-go-back").className = "show";
   }
-  //alert(document.referrer);
-  //window.history.back();
 }

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'events/' => 'events#index', as: :events
   get 'events/view/:id' => 'events#show', as: :event
   get 'events/search' => 'events#search', as: :search
+  get 'events/colaborate' => 'events#colaborate', as: :colaborate
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

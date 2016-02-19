@@ -9,4 +9,7 @@ class EventsController < ApplicationController
 
   def search
   end
+
+  def colaborate
+  end
 end

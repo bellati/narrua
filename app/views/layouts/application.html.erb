@@ -15,7 +15,7 @@
     <li><%= link_to Time.now.to_datetime.strftime("%d.%m"), events_path, id: "nav-a-events" %></a></li>
     <li><%= link_to "busca", search_path, id: "nav-a-search" %></li>
   </ul>
-  <div class="logo">
+  <div id="logo">
     <%= image_tag "narrua.png", { width: 200 } %>
   </div>
   <%= yield %>

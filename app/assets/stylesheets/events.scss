@@ -9,9 +9,18 @@ $color-white: #ffffff;
 $color-grey: #656565;
 $background-color: $color-white;
 
-.logo {
+#logo {
   text-align: center;
   margin-top: 20px;
+}
+
+#facebook-login {
+  text-align: center;
+  margin-top: 0.7em;
+}
+
+#facebook-logo {
+  cursor: pointer;
 }
 
 ul {
@@ -61,6 +70,10 @@ ul {
   a.show {
     display: inline-block;
   }
+}
+
+.hide {
+  display: none;
 }
 
 body {

@@ -2,6 +2,6 @@
   <% if notice == true then %>
     Obrigado por colaborar! Os eventos que você nos enviou estarão disponíveis nos próximos minutos.
   <% else %>
-    <%= link_to "Colaborar utilizando o facebook", "/auth/facebook", id: "sign-in" %>
+    <%= link_to (image_tag "facebook-logo.png", {height: 40, title: "Colaborar utilizando os eventos do seu Facebook"}), "/auth/facebook", id: "sign-in" %>
   <% end %>
 </div>

@@ -8,6 +8,7 @@ $color-black: #000000;
 $color-white: #ffffff;
 $color-grey: #656565;
 $background-color: $color-white;
+$bottom-distance-from-logo: 0.7em;
 
 #logo {
   text-align: center;
@@ -16,7 +17,12 @@ $background-color: $color-white;
 
 #facebook-login {
   text-align: center;
-  margin-top: 0.7em;
+  text-transform: lowercase;
+  font-size: 25px;
+  font-family: $font-default;
+  font-weight: 400;
+  margin-top: $bottom-distance-from-logo;
+  color: $color-black;
 }
 
 #facebook-logo {

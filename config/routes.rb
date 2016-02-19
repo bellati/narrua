@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
+  # normal
   root 'events#index'
   get 'events/' => 'events#index', as: :events
   get 'events/view/:id' => 'events#show', as: :event
   get 'events/search' => 'events#search', as: :search
   get 'events/colaborate' => 'events#colaborate', as: :colaborate
+
+  # for facebook authentication
+  get 'auth/:provider/callback' => 'users#create'
+  get 'auth/failure' => redirect('/')
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

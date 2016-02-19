@@ -14,6 +14,7 @@
     <li id="li-go-back"><%= link_to "voltar", events_path, id: "nav-a-go-back" %></li>
     <li><%= link_to Time.now.to_datetime.strftime("%d.%m"), events_path, id: "nav-a-events" %></a></li>
     <li><%= link_to "busca", search_path, id: "nav-a-search" %></li>
+    <li><%= link_to "colaborar", colaborate_path, id: "nav-a-colaborate" %></li>
   </ul>
   <div id="logo">
     <%= image_tag "narrua.png", { width: 200 } %>

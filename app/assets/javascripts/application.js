@@ -22,6 +22,9 @@ window.onload = function() {
     case "eventssearch":
       document.getElementById("nav-a-search").className += " active";
       break;
+    case "eventscolaborate":
+      document.getElementById("nav-a-colaborate").className += " active";
+      break;
     default:
       document.getElementById("nav-a-go-back").className = "show";
   }

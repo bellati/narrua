@@ -1,16 +1,16 @@
 class EventsController < ApplicationController
   def index
-    # se for ate 4 da manhã, vê os eventos que começaram ontem até 8 hrs
-
     now = Time.now
     lower_limit = nil
     upper_limit = nil
 
     # se for entre meia-noite e quatro da manhã...
     if now.hour >= 0 and now.hour <= 3 then
+      # vê os eventos de ontem que começaram até 8hrs e os que começaram até 4 horas da manhã de hoje
       lower_limit = now.to_datetime.at_beginning_of_day() - 4.hour - 1.second
       upper_limit = now.to_datetime.at_beginning_of_day() + 4.hour + 1.second
     else
+      # senão... vê os eventos que começaram entre até 5 horas atrás de agora (assume que acabou) e 4 horas da manhã do dia seguinte
       lower_limit = now.to_datetime - 5.hour - 1.second
       upper_limit = now.to_datetime.at_end_of_day() + 4.hour + 1.second
     end

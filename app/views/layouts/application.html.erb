@@ -17,7 +17,7 @@
     <!-- <li><%= link_to "colaborar", colaborate_path, id: "nav-a-colaborate" %></li> -->
   </ul>
   <div id="logo">
-    <%= image_tag "narrua_minimal.png", { width: 80 } %>
+    <%= link_to(image_tag("narrua_minimal.png", { width: 80 }), events_path) %>
   </div>
   <%= yield %>
 </div>

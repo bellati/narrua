@@ -1,6 +1,14 @@
 class EventsController < ApplicationController
   def index
-    @events = Event.all
+    date = Time.now.to_datetime + 3.hour
+    @events = Event.where(
+      'extract(year from start_time) = ? AND ' + 
+      'extract(month from start_time) = ? AND ' +
+      'extract(day from start_time) = ?', 
+      date.year,
+      date.month,
+      date.day
+    )
   end
 
   def show

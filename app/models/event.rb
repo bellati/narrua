@@ -29,7 +29,7 @@ class Event < ActiveRecord::Base
         event.place_location_latitude = facebook['place']['location']['latitude']
         event.place_location_longitude = facebook['place']['location']['longitude']
         event.place_location_state = facebook['place']['location']['state']
-        event.place_location_street = facebook['place']['location']['street']
+        event.set_place_location_street(facebook['place']['location']['street'])
         event.place_id = facebook['place']['id']
         event.start_time = facebook['start_time']
         event.timezone = facebook['timezone']
@@ -41,5 +41,13 @@ class Event < ActiveRecord::Base
 
   def set_description(description)
     self.description = description.gsub(/\n/, "<br/>")
+  end
+
+  def set_place_location_street(place_location_street)
+    if place_location_street.nil?
+        self.place_location_street = self.place_name
+    else
+        self.place_location_street = place_location_street
+    end
   end
 end

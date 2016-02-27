@@ -229,6 +229,8 @@ body {
 }
 
 .eaddress {
+  width: 80%;
+  text-overflow: ellipsis;
   font-size: $font-size-text-small;
   font-weight: 200;
   letter-spacing: 1px;
@@ -243,6 +245,8 @@ body {
 
 .eattending {
   @extend .eaddress;
+  width: 20%;
+  text-align: right;
   float: right;
 }
 

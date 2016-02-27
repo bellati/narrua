@@ -137,16 +137,16 @@ ul {
   li:last-child {
     margin-right: 4px;
   }
-}
 
-#li-go-back {
-  float: left;
-  padding-left: 4px;
-  a {
-    display: none;
-  }
-  a.show {
-    display: inline-block;
+  #li-go-back {
+    float: left;
+    padding-left: 4px;
+    a {
+      display: none;
+    }
+    a.show {
+      display: inline-block;
+    }
   }
 }
 
@@ -175,6 +175,8 @@ body {
 }
 
 .ename {
+  width: 85%;
+  text-overflow: ellipsis;
   margin: auto;
   font-size: $font-size-text-big;
   font-weight: 200;
@@ -183,6 +185,24 @@ body {
   margin-top: 0.7em;
   display: inline-block;
 }
+
+.einfobutton {
+  width: 10%;
+  font-size: $font-size-text-smallest;
+  font-weight: 200;
+  margin-top: 15px;
+  letter-spacing: 1px;
+  float: right;
+  a {
+    text-decoration: none;
+    color: $gray-dark;
+    border-bottom: 1px solid $gray-dark;
+  }
+  a:hover {
+    border-bottom: none;
+  }
+}
+
 
 .eplacetime {
   font-size: $font-size-text-small;
@@ -224,22 +244,6 @@ body {
 .eattending {
   @extend .eaddress;
   float: right;
-}
-
-.einfobutton {
-  font-size: $font-size-text-smallest;
-  font-weight: 200;
-  margin-top: 15px;
-  letter-spacing: 1px;
-  float: right;
-  a {
-    text-decoration: none;
-    color: $gray-dark;
-    border-bottom: 1px solid $gray-dark;
-  }
-  a:hover {
-    border-bottom: none;
-  }
 }
 
 .edescription {

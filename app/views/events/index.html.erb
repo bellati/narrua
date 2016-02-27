@@ -2,6 +2,6 @@
   <div class="event">
     <div class="ename"><%= e.name %></div>
     <div class="einfo"><%= link_to "info", event_path(e.id) %></div>
-    <div class="esummary"><%= e.location + " - " + e.start_datetime.strftime("%Hh") %></div>
+    <div class="esummary"><%= e.place_name + " - " + e.start_time.strftime("%Hh") %></div>
   </div>
 <% end %>

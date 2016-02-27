@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'events/view/:id' => 'events#show', as: :event
   get 'events/search' => 'events#search', as: :search
   get 'events/colaborate' => 'events#colaborate', as: :colaborate
+  get 'events/get_from_facebook/:user_id' => 'events#get_from_facebook', as: :get_from_facebook
 
   # for facebook authentication
   get 'auth/:provider/callback' => 'users#create'

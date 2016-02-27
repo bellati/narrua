@@ -162,6 +162,7 @@ body {
 .edescription {
   @extend .esummary;
   text-align: justify;
+  word-wrap: break-word;
 }
 
 @media(min-width: 451px) {

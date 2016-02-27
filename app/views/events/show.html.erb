@@ -3,5 +3,5 @@
   <div class="esummary"><%= @event.place_name + " - " + @event.start_time.strftime("%Hh") %></div>
   <div class="esummary"><%= @event.place_location_street %></div>
   <div class="esummary"><%= @event.attending_count %></div>
-  <div class="edescription"><pre><%= @event.description %></pre></div>
+  <div class="edescription"><%= sanitize @event.description %></div>
 </div>

@@ -15,7 +15,7 @@ class FB
     while true do
       events = nil
       response = get_response(paging_next)
-      if !response['error'].nil? # TODO: log
+      if !response['error'].nil?
         puts 'RECEIVED \'ERROR\' STATUS FROM FACEBOOK API'
         break
       end

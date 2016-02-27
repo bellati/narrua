@@ -57,8 +57,6 @@ class FB
   def get_response(path)
     uri = URI(path)
     # TODO: use_ssl
-    response = JSON.parse(Net::HTTP.get_response(uri).body)
-    puts response
-    response
+    JSON.parse(Net::HTTP.get_response(uri).body)
   end
 end

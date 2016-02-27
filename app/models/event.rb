@@ -1,5 +1,6 @@
 class Event < ActiveRecord::Base
   def self.from_facebook(facebook)
+    # event must be public and belong to the city of Brasília
     if facebook['type'] == 'public' and !facebook['place']['location'].nil? and 
         facebook['place']['location']['city'] == 'Brasília' then
       where(facebook_id: facebook['id']).first_or_initialize.tap do |event|

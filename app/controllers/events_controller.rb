@@ -1,14 +1,21 @@
 class EventsController < ApplicationController
   def index
-    date = Time.now.to_datetime + 3.hour
-    @events = Event.where(
-      'extract(year from start_time) = ? AND ' + 
-      'extract(month from start_time) = ? AND ' +
-      'extract(day from start_time) = ?', 
-      date.year,
-      date.month,
-      date.day
-    )
+    # se for ate 4 da manhã, vê os eventos que começaram ontem até 8 hrs
+
+    now = Time.now
+    lower_limit = nil
+    upper_limit = nil
+
+    # se for entre meia-noite e quatro da manhã...
+    if now.hour >= 0 and now.hour <= 3 then
+      lower_limit = now.to_datetime.at_beginning_of_day() - 4.hour - 1.second
+      upper_limit = now.to_datetime.at_beginning_of_day() + 4.hour + 1.second
+    else
+      lower_limit = now.to_datetime - 5.hour - 1.second
+      upper_limit = now.to_datetime.at_end_of_day() + 4.hour + 1.second
+    end
+    @events = Event.where('start_time >= ? AND start_time <= ?', lower_limit, upper_limit).order(attending_count: :desc)
+
   end
 
   def show

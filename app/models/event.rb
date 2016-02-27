@@ -10,7 +10,7 @@ class Event < ActiveRecord::Base
       event.cover_source = facebook['cover']['source']
       event.cover_id = facebook['cover']['id']
       event.declined_count = facebook['declined_count']
-      event.description = facebook['description']
+      event.set_description(facebook['description'])
       event.end_time = facebook['end_time']
       event.guest_list_enabled = facebook['guest_list_enabled']
       event.interested_count = facebook['interested_count']
@@ -35,5 +35,9 @@ class Event < ActiveRecord::Base
       event.updated_time = facebook['updated_time']
       event.save!
     end
+  end
+
+  def set_description(description)
+    self.description = description.gsub(/\n/, "<br/>")
   end
 end

@@ -3,12 +3,28 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 $font-default: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+// gray scale
+// $gray-darker: #222;
+// $gray-dark: #333;
+// $gray: #555;
+// $gray-light: #777;
+// $gray-lighter: #eee;
+
 $color-wine: #8f2c2c;
 $color-black: #000000;
 $color-white: #ffffff;
 $color-grey: #656565;
 $background-color: $color-white;
 $bottom-distance-from-logo: 0.7em;
+
+pre {
+ white-space: pre-wrap;       /* css-3 */
+ white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+ white-space: -pre-wrap;      /* Opera 4-6 */
+ white-space: -o-pre-wrap;    /* Opera 7 */
+ word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
 
 #logo {
   text-align: center;

@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
   def self.from_facebook(facebook)
-    if facebook['type'] == 'public' then
+    if facebook['type'] == 'public' && facebook['place_location_city'] == 'Brasília' then
       where(facebook_id: facebook['id']).first_or_initialize.tap do |event|
         event.facebook_id = facebook['id']
         event.attending_count = facebook['attending_count']

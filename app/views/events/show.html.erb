@@ -1,6 +1,6 @@
 <div class="event">
-  <div class="ename"><%= @event.name %></div>
-  <div class="eplacetime"><%= @event.place_name + " - " + @event.start_time.strftime("%Hh") %></div>
+  <div class="center ename"><%= @event.name %></div>
+  <div class="center eplacetime"><%= @event.place_name + " - " + @event.start_time.strftime("%Hh") %></div>
   <%= image_tag @event.cover_source, class: 'eimage' %>
   <div class="section">
     <div class="eaddress"><span class="icon icon-location"></span><%= @event.place_location_street %></div>

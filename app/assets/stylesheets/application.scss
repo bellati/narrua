@@ -175,9 +175,11 @@ body {
 }
 
 .ename {
+  margin: auto;
   font-size: $font-size-text-big;
   font-weight: 200;
   letter-spacing: -1px;
+  text-transform: lowercase;
   margin-top: 0.7em;
   display: inline-block;
 }
@@ -190,6 +192,14 @@ body {
   color: $gray-light;
   margin-left: 2px;
   margin-bottom: 0.7em;
+}
+
+.center {
+  width: 100%;
+  padding: 0 0 0 0;
+  margin-left: 0px;
+  margin-right: 0px;
+  text-align: center;
 }
 
 .section {
@@ -252,9 +262,7 @@ body {
   #events {
     width: 440px;
   }
-}
 
-@media(min-width: 375px) {
   #nav {
     li {
       margin-left: 20px;

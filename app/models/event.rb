@@ -1,17 +1,23 @@
 class Event < ActiveRecord::Base
   def self.from_facebook(facebook)
     # event must be public and belong to the city of Brasília
-    if facebook['type'] == 'public' and !facebook['place']['location'].nil? and 
-        facebook['place']['location']['city'] == 'Brasília' then
+    return if facebook['type'].nil?
+    return if facebook['type'] != 'public'
+    return if facebook['place'].nil?
+    return if facebook['place']['location'].nil?
+    return if facebook['place']['location']['city'] != 'Brasília'
+
       where(facebook_id: facebook['id']).first_or_initialize.tap do |event|
         event.facebook_id = facebook['id']
         event.attending_count = facebook['attending_count']
         event.can_guests_invite = facebook['can_guests_invite']
         event.category = facebook['category']
-        event.cover_offset_x = facebook['cover']['offset_x']
-        event.cover_offset_y = facebook['cover']['offset_y']
-        event.cover_source = facebook['cover']['source']
-        event.cover_id = facebook['cover']['id']
+        if !facebook['cover'].nil? then
+            event.cover_offset_x = facebook['cover']['offset_x']
+            event.cover_offset_y = facebook['cover']['offset_y']
+            event.cover_source = facebook['cover']['source']
+            event.cover_id = facebook['cover']['id']
+        end
         event.declined_count = facebook['declined_count']
         event.set_description(facebook['description'])
         event.end_time = facebook['end_time']
@@ -38,7 +44,6 @@ class Event < ActiveRecord::Base
         event.updated_time = facebook['updated_time']
         event.save!
       end
-    end
   end
 
   def set_description(description)

@@ -61,7 +61,7 @@ $font-size-text-biggest: 22px;
 $font-size-text-big: 20px;
 $font-size-text: 17px;
 $font-size-text-small: 14px;
-$font-size-text-smallest: 12px;
+$font-size-text-smallest: 13px;
 
 $gray-darker: #222;
 $gray-dark: #333;
@@ -212,8 +212,8 @@ body {
 }
 
 .section {
-  border-bottom: 1px solid $gray-lighter;
-  border-top: 1px solid $gray-lighter;
+  border-bottom: 1px solid $gray-darker;
+  border-top: 1px solid $gray-darker;
   margin-bottom: 0.7em;
 }
 
@@ -224,7 +224,7 @@ body {
   font-weight: 200;
   letter-spacing: 1px;
   text-transform: lowercase;
-  color: $gray-light;
+  color: $gray-darker;
   display: inline-block;
   .icon {
     font-size: 16px;
@@ -242,9 +242,9 @@ body {
 .edescription {
   font-family: $font-default;
   font-size: $font-size-text-smallest;
-  color: $gray-light;
+  color: $gray-darker;
   letter-spacing: 1px;
-  font-weight: 400;
+  font-weight: 200;
   text-align: justify;
   word-wrap: break-word;
   line-height: 23px;
@@ -253,7 +253,7 @@ body {
 .edescription-price {
   font-weight: 700;
   display: inline-block;
-  color: $gray-darker;
+  color: red;
 }
 
 .edescription-link {

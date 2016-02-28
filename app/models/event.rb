@@ -49,8 +49,8 @@ class Event < ActiveRecord::Base
   def set_description(description)
     s = description
     s = s.gsub(/\n/, "<br/>")
-    s = s.gsub(/(\d{1,3}([\,\.]\d{1,2})? {0,}rea[il]s?)/i, '<div class="edescription-price">\1</div>')
-    s = s.gsub(/((preço|entrada|custo|quanto|r\$|\$) {0,}\:? {0,}\d{1,3}([\.\,]\d{1,2})?)/i, '<div class="edescription-price">\1</div>')
+    s = s.gsub(/(\d{1,3}([\,\.]\d{1,2})? {0,}rea[il]s?)/i, '<div class="edescription-price">\1</div>') #sufixo
+    s = s.gsub(/((preço|entrada|custo|quanto|r\$|\$) {0,}\:? {0,}\d{1,3}([\.\,]\d{1,2})?)/i, '<div class="edescription-price">\1</div>') #prefixo
     s = s.gsub(/(https?\:\/\/[a-z\d\-\_\.\/\%\=\&\?]+)/i, '<div class="edescription-link"><a href="\1">\1</a></div>')
     self.description = s
   end

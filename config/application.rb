@@ -8,7 +8,7 @@ Bundler.require(*Rails.groups)
 
 module Narrua
   class Application < Rails::Application
-    config.action_view.sanitized_allowed_tags = ['br']
+    config.action_view.sanitized_allowed_tags = ['br', 'div', 'a']
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

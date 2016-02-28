@@ -261,6 +261,24 @@ body {
   line-height: 23px;
 }
 
+.edescription-price {
+  font-weight: 700;
+  display: inline-block;
+  color: $gray-darker;
+}
+
+.edescription-link {
+  display: inline-block;
+  a {
+    text-decoration: none;
+    color: $gray-darker;
+    border-bottom: 1px solid $gray-light;
+  }
+  a:hover {
+    border-bottom: none;
+  }
+}
+
 .eimage {
   width: 100%;
   margin-bottom: 0.7em;

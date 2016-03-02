@@ -51,17 +51,19 @@ class Event < ActiveRecord::Base
     lower_limit = nil
     upper_limit = nil
 
-    # se for entre meia-noite e quatro da manhã...
-    if now.hour >= 0 and now.hour <= 3 then
-      # vê os eventos de ontem que começaram até 8hrs e os que começaram até 4 horas da manhã de hoje
-      lower_limit = now.to_datetime.at_beginning_of_day() - 4.hour - 1.second
-      upper_limit = now.to_datetime.at_beginning_of_day() + 4.hour + 1.second
+    # se for entre meia-noite e seis da manhã...
+    if now.hour >= 0 and now.hour <= 6 then
+      # os eventos de ontem são mostrados até 6 horas da manhã de hoje
+      lower_limit = now.to_datetime.yesterday.at_beginning_of_day
+      upper_limit = now.to_datetime.at_beginning_of_day + 6.hours
     else
-      # senão... vê os eventos que começaram entre até 5 horas atrás de agora (assume que acabou) e 4 horas da manhã do dia seguinte
-      lower_limit = now.to_datetime - 5.hour - 1.second
-      upper_limit = now.to_datetime.at_end_of_day() + 4.hour + 1.second
+      lower_limit = now.to_datetime.at_beginning_of_day
+      upper_limit = now.to_datetime.at_end_of_day + 6.hours + 1.second
     end
-    Event.where('start_time >= ? AND start_time <= ?', lower_limit, upper_limit).order(attending_count: :desc)
+    Event.where('(end_time IS NULL and start_time >= ? AND start_time <= ?) OR ' + 
+                '(end_time IS NOT NULL and start_time <= ? AND end_time >= ?)', 
+                lower_limit, upper_limit,
+                upper_limit, now.to_datetime).order(attending_count: :desc)
   end
 
   def set_description(description)

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  # devise / activeadmin
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+
   # normal
   root 'events#index'
   get 'events/' => 'events#index', as: :events
@@ -9,7 +11,7 @@ Rails.application.routes.draw do
   get 'events/colaborate' => 'events#colaborate', as: :colaborate
   get 'events/get_from_facebook/:user_id' => 'events#get_from_facebook', as: :get_from_facebook
 
-  # for facebook authentication
+  # facebook_auth
   get 'auth/:provider/callback' => 'users#create'
   get 'auth/failure' => redirect('/')
 

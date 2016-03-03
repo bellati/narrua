@@ -10,7 +10,6 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require_tree .
 
 window.onload = function() {
   var pathname = window.location.pathname.replace(/\//g, '');

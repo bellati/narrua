@@ -3,11 +3,19 @@ ActiveAdmin.register_page "Dashboard" do
   menu priority: 1, label: proc{ I18n.t("active_admin.dashboard") }
 
   content title: proc{ I18n.t("active_admin.dashboard") } do
-    div class: "blank_slate_container", id: "dashboard_default_message" do
-      span class: "blank_slate" do
-        span I18n.t("active_admin.dashboard_welcome.welcome")
-        small I18n.t("active_admin.dashboard_welcome.call_to_action")
-      end
+
+    columns do
+        column do
+            panel "Today Events" do
+                table do
+                    Event.all_from_today.map do |event|
+                    tr 
+                        td link_to(event.name, admin_event_path(event))
+                        td link_to('View Actual', event_path(event))
+                    end
+                end
+            end
+        end
     end
 
     # Here is an example of a simple dashboard with columns and panels.

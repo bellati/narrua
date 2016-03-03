@@ -11,7 +11,7 @@ ActiveAdmin.register_page "Dashboard" do
                     Event.all_from_today.map do |event|
                     tr 
                         td link_to(event.name, admin_event_path(event))
-                        td link_to('View Actual', event_path(event))
+                        td link_to('View Actual', event_path(event), target: "_blank")
                     end
                 end
             end

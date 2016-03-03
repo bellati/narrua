@@ -2,6 +2,19 @@ ActiveAdmin.register Event do
   actions :index, :show
 
   menu priority: 2
+  
+  config.sort_order = 'start_time_asc'
+
+  controller do
+    def scoped_collection
+      Event.all_from_today_or_future
+    end
+  end
+
+  filter :start_time
+  filter :end_time
+  filter :owner_name
+  filter :place_name
 
   index do
     column :start_time

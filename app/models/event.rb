@@ -7,7 +7,7 @@ class Event < ActiveRecord::Base
     return if facebook['place']['location'].nil?
     return if facebook['place']['location']['city'] != 'Brasília'
 
-      where(facebook_id: facebook['id']).first_or_initialize.tap do |event|
+    where(facebook_id: facebook['id']).first_or_initialize.tap do |event|
         event.facebook_id = facebook['id']
         event.attending_count = facebook['attending_count']
         event.can_guests_invite = facebook['can_guests_invite']
@@ -43,7 +43,7 @@ class Event < ActiveRecord::Base
         event.timezone = facebook['timezone']
         event.updated_time = facebook['updated_time']
         event.save!
-      end
+    end
   end
 
   def self.all_from_today
@@ -60,10 +60,18 @@ class Event < ActiveRecord::Base
       lower_limit = now.to_datetime.at_beginning_of_day
       upper_limit = now.to_datetime.at_end_of_day + 6.hours + 1.second
     end
-    Event.where('(end_time IS NULL and start_time >= ? AND start_time <= ?) OR ' + 
-                '(end_time IS NOT NULL and start_time <= ? AND end_time >= ?)', 
+    Event.where('(end_time IS NULL AND start_time >= ? AND start_time <= ?) OR ' + 
+                '(end_time IS NOT NULL AND start_time <= ? AND end_time >= ?)', 
                 lower_limit, upper_limit,
                 upper_limit, now.to_datetime).order(attending_count: :desc)
+  end
+
+  def self.all_from_today_or_future
+    now = Time.now
+    lower_limit = now.to_datetime.at_beginning_of_day
+    Event.where('(end_time IS NULL AND start_time >= ?) OR ' + 
+            '(end_time IS NOT NULL AND end_time >= ?)', 
+            lower_limit, now.to_datetime)
   end
 
   def set_description(description)

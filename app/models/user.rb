@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-  has_many :events, as: :creator
+  has_many :events, foreign_key: 'creator_id', class_name: 'Event'
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|

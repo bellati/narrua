@@ -14,9 +14,9 @@ ActiveAdmin.register Event do
 
   action_item :dis_approve, only: [:show] do
     if event.is_approved then
-      link_to 'Disapprove', dis_approve_admin_event_path(event), method: :put
+      link_to 'Disapprove', dis_approve_admin_event_path(event), method: :put, data: {confirm: 'Are you sure?'}
     else
-      link_to 'Approve', dis_approve_admin_event_path(event), method: :put
+      link_to 'Approve', dis_approve_admin_event_path(event), method: :put, data: {confirm: 'Are you sure?'}
     end
   end
 
@@ -30,11 +30,11 @@ ActiveAdmin.register Event do
       if event.is_approved then
         event.is_approved = false
         event.save!
-        redirect_to admin_events_path, notice: 'Event was disapproved!'
+        redirect_to admin_events_path, alert: 'Event "' + event.name + '" was disapproved!'
       else
         event.is_approved = true
         event.save!
-        redirect_to admin_events_path, notice: 'Event was approved!'
+        redirect_to admin_events_path, notice: 'Event "' + event.name + '" was approved!'
       end
     end
   end
@@ -54,9 +54,9 @@ ActiveAdmin.register Event do
     column :updated_at
     actions defaults: true do |event|
       if event.is_approved then
-        link_to 'Disapprove', dis_approve_admin_event_path(event), method: :put
+        link_to 'Disapprove', dis_approve_admin_event_path(event), method: :put, data: {confirm: 'Are you sure?'}
       else
-        link_to 'Approve', dis_approve_admin_event_path(event), method: :put
+        link_to 'Approve', dis_approve_admin_event_path(event), method: :put, data: {confirm: 'Are you sure?'}
       end
     end
   end

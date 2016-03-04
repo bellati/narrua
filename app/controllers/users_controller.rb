@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def create
     user = User.from_omniauth(env["omniauth.auth"])
-    redirect_to get_from_facebook_path(user_id: user.id), notice: true
+    redirect_to colaborate_path, notice: true
   end
 end

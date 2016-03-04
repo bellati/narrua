@@ -6,13 +6,19 @@ ActiveAdmin.register_page "Dashboard" do
 
     columns do
         column do
+            panel "Not Approved Events" do
+                table_for Event.all_from_today_or_future_not_approved.order('start_time asc').limit(10) do
+                    column("Event Name") {|event| link_to(event.name, admin_event_path(event))}
+                    column("Start Time") {|event| event.start_time.strftime('%d/%m %H:%M') unless event.start_time.nil?}
+                    column("End Time") {|event| event.end_time.strftime('%d/%m %H:%M') unless event.end_time.nil?}
+                end
+            end
+        end
+        column do
             panel "Today Events" do
-                table do
-                    Event.all_from_today.map do |event|
-                    tr 
-                        td link_to(event.name, admin_event_path(event))
-                        td link_to('View Actual', event_path(event), target: "_blank")
-                    end
+                table_for Event.all_from_today.order('start_time asc') do
+                    column('Event Name') {|event| link_to(event.name, admin_event_path(event))}
+                    column('Link') {|event| link_to('View On Site', event_path(event), target: "_blank")}
                 end
             end
         end

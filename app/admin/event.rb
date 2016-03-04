@@ -6,21 +6,18 @@ ActiveAdmin.register Event do
   config.sort_order = 'start_time_asc'
 
   action_item :view, only: [:show] do
-    link_to 'View on site', event_path(event), target: "_blank"
+    link_to 'View on site', event_path(event), target: '_blank'
   end
 
-  member_action :approve, method: :put do
+  member_action :dis_approve, method: :put do
   end
 
-  action_item :approve, only: [:show] do
-    link_to 'Approve', approve_admin_event_path(event), method: :put
-  end
-
-  member_action :disapprove, method: :put do
-  end
-
-  action_item :disapprove, only: [:show] do
-    link_to 'Disapprove', disapprove_admin_event_path(event), method: :put
+  action_item :dis_approve, only: [:show] do
+    if event.is_approved then
+      link_to 'Disapprove', dis_approve_admin_event_path(event), method: :put
+    else
+      link_to 'Approve', dis_approve_admin_event_path(event), method: :put
+    end
   end
 
   controller do
@@ -28,25 +25,16 @@ ActiveAdmin.register Event do
       Event.all_from_today_or_future
     end
 
-    def approve
+    def dis_approve
       event = Event.find(params[:id])
       if event.is_approved then
-        redirect_to admin_events_path, alert: 'Event is already approved!'
+        event.is_approved = false
+        event.save!
+        redirect_to admin_events_path, notice: 'Event was disapproved!'
       else
         event.is_approved = true
         event.save!
         redirect_to admin_events_path, notice: 'Event was approved!'
-      end
-    end
-
-    def disapprove
-      event = Event.find(params[:id])
-      if !event.is_approved then
-        redirect_to admin_events_path, alert: 'Event is already disapproved!'
-      else
-        event.is_approved = false
-        event.save!
-        redirect_to admin_events_path, notice: 'Event was disapproved!'
       end
     end
   end
@@ -66,9 +54,9 @@ ActiveAdmin.register Event do
     column :updated_at
     actions defaults: true do |event|
       if event.is_approved then
-        link_to 'Disapprove', disapprove_admin_event_path(event), method: :put
+        link_to 'Disapprove', dis_approve_admin_event_path(event), method: :put
       else
-        link_to 'Approve', approve_admin_event_path(event), method: :put
+        link_to 'Approve', dis_approve_admin_event_path(event), method: :put
       end
     end
   end

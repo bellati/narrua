@@ -72,10 +72,29 @@ class Event < ActiveRecord::Base
 
   def self.all_from_today_or_future
     now = Time.now
-    lower_limit = now.to_datetime.at_beginning_of_day
+    lower_limit = nil
+    if now.hour >= 0 and now.hour <= 6 then
+        lower_limit = now.to_datetime.yesterday.at_beginning_of_day
+    else
+        lower_limit = now.to_datetime.at_beginning_of_day
+    end
     Event.where('(end_time IS NULL AND start_time >= ?) OR ' + 
             '(end_time IS NOT NULL AND end_time >= ?)', 
             lower_limit, now.to_datetime)
+  end
+
+  def self.all_from_today_or_future_not_approved
+    now = Time.now
+    lower_limit = nil
+    if now.hour >= 0 and now.hour <= 6 then
+        lower_limit = now.to_datetime.yesterday.at_beginning_of_day
+    else
+        lower_limit = now.to_datetime.at_beginning_of_day
+    end
+    Event.where('is_approved = false AND ' + 
+                '((end_time IS NULL AND start_time >= ?) OR ' + 
+                '(end_time IS NOT NULL AND end_time >= ?))', 
+                lower_limit, now.to_datetime)
   end
 
   def set_description(description)

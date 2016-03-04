@@ -3,40 +3,28 @@ ActiveAdmin.register User do
 
   menu priority: 3
 
-  member_action :approve, method: :put do
+  member_action :dis_approve, method: :put do
   end
 
-  action_item :approve, only: [:show] do
-    link_to 'Approve', approve_admin_user_path(user), method: :put
-  end
-
-  member_action :disapprove, method: :put do
-  end
-
-  action_item :disapprove, only: [:show] do
-    link_to 'Disapprove', disapprove_admin_user_path(user), method: :put
+  action_item :dis_approve, only: [:show] do
+    if user.is_approved then
+      link_to 'Disapprove', dis_approve_admin_user_path(user), method: :put
+    else
+      link_to 'Approve', dis_approve_admin_user_path(user), method: :put
+    end
   end
 
   controller do
-    def approve
+    def dis_approve
       user = User.find(params[:id])
       if user.is_approved then
-        redirect_to admin_users_path, alert: 'User is already approved!'
+        user.is_approved = false
+        user.save!
+        redirect_to admin_users_path, notice: 'User was disapproved!'
       else
         user.is_approved = true
         user.save!
         redirect_to admin_users_path, notice: 'User was approved!'
-      end
-    end
-
-    def disapprove
-      user = User.find(params[:id])
-      if !user.is_approved then
-        redirect_to admin_users_path, alert: 'User is already disapproved!'
-      else
-        user.is_approved = false
-        user.save!
-        redirect_to admin_users_path, notice: 'User was disapproved!'
       end
     end
   end
@@ -48,9 +36,9 @@ ActiveAdmin.register User do
     column :updated_at
     actions defaults: true do |user|
       if user.is_approved then
-        link_to 'Disapprove', disapprove_admin_user_path(user), method: :put
+        link_to 'Disapprove', dis_approve_admin_user_path(user), method: :put
       else
-        link_to 'Approve', approve_admin_user_path(user), method: :put
+        link_to 'Approve', dis_approve_admin_user_path(user), method: :put
       end
     end
   end

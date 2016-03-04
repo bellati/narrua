@@ -1,5 +1,8 @@
 class Event < ActiveRecord::Base
-  def self.from_facebook(facebook, user_is_approved)
+
+  belongs_to :user, foreign_key: 'creator_id'
+
+  def self.from_facebook(facebook, user)
     # event must be public and belong to the city of Brasília
     return if facebook['type'].nil?
     return if facebook['type'] != 'public'
@@ -8,44 +11,45 @@ class Event < ActiveRecord::Base
     return if facebook['place']['location']['city'] != 'Brasília'
 
     where(facebook_id: facebook['id']).first_or_initialize.tap do |event|
-        if event.id.nil?
-          event.is_approved = user_is_approved
-        end
-        event.facebook_id = facebook['id']
-        event.attending_count = facebook['attending_count']
-        event.can_guests_invite = facebook['can_guests_invite']
-        event.category = facebook['category']
-        if !facebook['cover'].nil? then
-            event.cover_offset_x = facebook['cover']['offset_x']
-            event.cover_offset_y = facebook['cover']['offset_y']
-            event.cover_source = facebook['cover']['source']
-            event.cover_id = facebook['cover']['id']
-        end
-        event.declined_count = facebook['declined_count']
-        event.set_description(facebook['description'])
-        event.end_time = facebook['end_time']
-        event.guest_list_enabled = facebook['guest_list_enabled']
-        event.interested_count = facebook['interested_count']
-        event.is_page_owned = facebook['is_page_owned']
-        event.is_viewer_admin = facebook['is_viewer_admin']
-        event.maybe_count = facebook['maybe_count']
-        event.name = facebook['name']
-        event.noreply_count = facebook['noreply_count']
-        event.owner_name = facebook['owner']['name']
-        event.owner_id = facebook['owner']['id']
-        event.parent_group = facebook['parent_group']
-        event.place_name = facebook['place']['name']
-        event.place_location_city = facebook['place']['location']['city']
-        event.place_location_country = facebook['place']['location']['country']
-        event.place_location_latitude = facebook['place']['location']['latitude']
-        event.place_location_longitude = facebook['place']['location']['longitude']
-        event.place_location_state = facebook['place']['location']['state']
-        event.set_place_location_street(facebook['place']['location']['street'])
-        event.place_id = facebook['place']['id']
-        event.start_time = facebook['start_time']
-        event.timezone = facebook['timezone']
-        event.updated_time = facebook['updated_time']
-        event.save!
+      if event.id.nil?
+        event.creator_id = user.id
+        event.is_approved = user.is_approved
+      end
+      event.facebook_id = facebook['id']
+      event.attending_count = facebook['attending_count']
+      event.can_guests_invite = facebook['can_guests_invite']
+      event.category = facebook['category']
+      if !facebook['cover'].nil? then
+          event.cover_offset_x = facebook['cover']['offset_x']
+          event.cover_offset_y = facebook['cover']['offset_y']
+          event.cover_source = facebook['cover']['source']
+          event.cover_id = facebook['cover']['id']
+      end
+      event.declined_count = facebook['declined_count']
+      event.set_description(facebook['description'])
+      event.end_time = facebook['end_time']
+      event.guest_list_enabled = facebook['guest_list_enabled']
+      event.interested_count = facebook['interested_count']
+      event.is_page_owned = facebook['is_page_owned']
+      event.is_viewer_admin = facebook['is_viewer_admin']
+      event.maybe_count = facebook['maybe_count']
+      event.name = facebook['name']
+      event.noreply_count = facebook['noreply_count']
+      event.owner_name = facebook['owner']['name']
+      event.owner_id = facebook['owner']['id']
+      event.parent_group = facebook['parent_group']
+      event.place_name = facebook['place']['name']
+      event.place_location_city = facebook['place']['location']['city']
+      event.place_location_country = facebook['place']['location']['country']
+      event.place_location_latitude = facebook['place']['location']['latitude']
+      event.place_location_longitude = facebook['place']['location']['longitude']
+      event.place_location_state = facebook['place']['location']['state']
+      event.set_place_location_street(facebook['place']['location']['street'])
+      event.place_id = facebook['place']['id']
+      event.start_time = facebook['start_time']
+      event.timezone = facebook['timezone']
+      event.updated_time = facebook['updated_time']
+      event.save!
     end
   end
 

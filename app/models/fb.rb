@@ -49,7 +49,7 @@ class FB
   private
   def process_events(events)
     events.each do |e|
-      Event.from_facebook(get_event(e['id']), @user.is_approved)
+      Event.from_facebook(get_event(e['id']), @user)
     end
   end
 

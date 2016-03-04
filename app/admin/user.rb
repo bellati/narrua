@@ -8,9 +8,9 @@ ActiveAdmin.register User do
 
   action_item :dis_approve, only: [:show] do
     if user.is_approved then
-      link_to 'Disapprove', dis_approve_admin_user_path(user), method: :put
+      link_to 'Disapprove', dis_approve_admin_user_path(user), method: :put, data: {confirm: 'Are you sure?'}
     else
-      link_to 'Approve', dis_approve_admin_user_path(user), method: :put
+      link_to 'Approve', dis_approve_admin_user_path(user), method: :put, data: {confirm: 'Are you sure?'}
     end
   end
 
@@ -20,11 +20,11 @@ ActiveAdmin.register User do
       if user.is_approved then
         user.is_approved = false
         user.save!
-        redirect_to admin_users_path, notice: 'User was disapproved!'
+        redirect_to admin_users_path, notice: 'User "' + user.name + '" was disapproved!'
       else
         user.is_approved = true
         user.save!
-        redirect_to admin_users_path, notice: 'User was approved!'
+        redirect_to admin_users_path, notice: 'User "' + user.name + '" was approved!'
       end
     end
   end
@@ -36,9 +36,9 @@ ActiveAdmin.register User do
     column :updated_at
     actions defaults: true do |user|
       if user.is_approved then
-        link_to 'Disapprove', dis_approve_admin_user_path(user), method: :put
+        link_to 'Disapprove', dis_approve_admin_user_path(user), method: :put, data: {confirm: 'Are you sure?'}
       else
-        link_to 'Approve', dis_approve_admin_user_path(user), method: :put
+        link_to 'Approve', dis_approve_admin_user_path(user), method: :put, data: {confirm: 'Are you sure?'}
       end
     end
   end

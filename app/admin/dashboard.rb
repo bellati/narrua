@@ -10,7 +10,7 @@ ActiveAdmin.register_page "Dashboard" do
                     column('Event Name') {|event| link_to(event.name, admin_event_path(event), target: '_blank')}
                     column('Start Time') {|event| event.start_time.strftime('%d/%m %H:%M') unless event.start_time.nil?}
                     column('End Time') {|event| event.end_time.strftime('%d/%m %H:%M') unless event.end_time.nil?}
-                    column('Updated At') {|event| event.updated_at.strftime('%d/%m %H:%M')}
+                    column('Created At') {|event| event.created_at.strftime('%d/%m %H:%M')}
                 end
             end
         end

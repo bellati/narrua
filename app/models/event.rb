@@ -8,8 +8,8 @@ class Event < ActiveRecord::Base
     return if facebook['place']['location']['city'] != 'Brasília'
 
     where(facebook_id: facebook['id']).first_or_initialize.tap do |event|
-        if event.id.nil? || !event.is_approved
-            event.is_approved = user_is_approved
+        if event.id.nil?
+          event.is_approved = user_is_approved
         end
         event.facebook_id = facebook['id']
         event.attending_count = facebook['attending_count']

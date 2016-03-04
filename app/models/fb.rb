@@ -4,6 +4,12 @@ class FB
   
   FACEBOOK_GRAPH = 'https://graph.facebook.com/v2.5/'
 
+  def self.get_or_update_events()
+    User.with_valid_token().map do |u|
+      FB.new(u).get_events()
+    end
+  end
+
   def initialize(user)
     @user = user
   end

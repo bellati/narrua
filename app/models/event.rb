@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
 
-  belongs_to :user, foreign_key: 'creator_id'
+  belongs_to :creator
 
   def self.from_facebook(facebook, user)
     # event must be public and belong to the city of Brasília

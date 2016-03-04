@@ -46,9 +46,12 @@ ActiveAdmin.register Event do
 
   index do
     column :name
+    column :is_approved
+    column :creator do |event|
+      link_to(event.creator.name, admin_user_path(creator), target: '_blank') unless event.creator.nil?
+    end
     column :start_time
     column :end_time
-    column :is_approved
     column :updated_time
     column :created_at
     column :updated_at

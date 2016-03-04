@@ -57,13 +57,10 @@ ActiveAdmin.register Event do
   filter :place_name
 
   index do
-    column :is_approved
+    column :name
     column :start_time
     column :end_time
-    column :name
-    column :owner_name
-    column :place_name
-    column :place_location_city
+    column :is_approved
     column :updated_time
     column :created_at
     column :updated_at

@@ -63,8 +63,9 @@ class Event < ActiveRecord::Base
       lower_limit = now.to_datetime.at_beginning_of_day
       upper_limit = now.to_datetime.at_end_of_day + 6.hours + 1.second
     end
-    Event.where('(end_time IS NULL AND start_time >= ? AND start_time <= ?) OR ' + 
-                '(end_time IS NOT NULL AND start_time <= ? AND end_time >= ?)', 
+    Event.where('is_approved = true AND ' +
+                '((end_time IS NULL AND start_time >= ? AND start_time <= ?) OR ' + 
+                '(end_time IS NOT NULL AND start_time <= ? AND end_time >= ?))', 
                 lower_limit, upper_limit,
                 upper_limit, now.to_datetime).order(attending_count: :desc)
   end

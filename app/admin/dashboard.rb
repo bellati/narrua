@@ -20,6 +20,10 @@ ActiveAdmin.register_page "Dashboard" do
                     column('Link') {|event| link_to('View On Site', event_path(event), target: '_blank')}
                 end
             end
+        end
+    end
+    columns do
+        column do
             panel "Last Added Events" do
                 table_for Event.all.order('created_at desc').limit(10) do
                     column('Event Name') {|event| link_to(event.name, admin_event_path(event), target: '_blank')}
@@ -30,7 +34,16 @@ ActiveAdmin.register_page "Dashboard" do
                 end
             end
         end
-        
+        column do
+            panel "Biggest Events" do
+                table_for Event.all_from_today_or_future.order('attending_count desc').limit(10) do
+                    column('Event Name') {|event| link_to(event.name, admin_event_path(event), target: '_blank')}
+                    column('Attending Count') {|event| event.attending_count}
+                    column('Start Time') {|event| event.start_time.strftime('%d/%m %H:%M') unless event.start_time.nil?}
+                    column('End Time') {|event| event.end_time.strftime('%d/%m %H:%M') unless event.end_time.nil?}
+                end
+            end
+        end
     end
 
     # Here is an example of a simple dashboard with columns and panels.

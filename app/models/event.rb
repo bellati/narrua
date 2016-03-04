@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  def self.from_facebook(facebook)
+  def self.from_facebook(facebook, user_is_approved)
     # event must be public and belong to the city of Brasília
     return if facebook['type'].nil?
     return if facebook['type'] != 'public'
@@ -8,6 +8,9 @@ class Event < ActiveRecord::Base
     return if facebook['place']['location']['city'] != 'Brasília'
 
     where(facebook_id: facebook['id']).first_or_initialize.tap do |event|
+        if event.id.nil? || !event.is_approved
+            event.is_approved = user_is_approved
+        end
         event.facebook_id = facebook['id']
         event.attending_count = facebook['attending_count']
         event.can_guests_invite = facebook['can_guests_invite']

@@ -14,7 +14,7 @@ class EventsController < ApplicationController
   end
 
   def get_from_facebook
-    FB.new(User.find(params[:user_id]).oauth_token).get_events()
+    FB.new(User.find(params[:user_id])).get_events()
     redirect_to colaborate_path, notice: true
   end
 end

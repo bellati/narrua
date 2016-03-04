@@ -4,13 +4,13 @@ class FB
   
   FACEBOOK_GRAPH = 'https://graph.facebook.com/v2.5/'
 
-  def initialize(access_token)
-    @access_token = access_token
+  def initialize(user)
+    @user = user
   end
 
   def get_events()
     first_page = true
-    paging_next = FACEBOOK_GRAPH + 'me?fields=events&access_token=' + @access_token
+    paging_next = FACEBOOK_GRAPH + 'me?fields=events&access_token=' + @user.oauth_token
 
     while true do
       events = nil
@@ -36,21 +36,20 @@ class FB
   end
 
   def get_event(id)
-    response = get_response(FACEBOOK_GRAPH + id + 
+    get_response(FACEBOOK_GRAPH + id + 
       '?fields=' +
       'id,attending_count,can_guests_invite,category,cover,' +
       'declined_count,description,end_time,guest_list_enabled,' +
       'interested_count,is_page_owned,is_viewer_admin,maybe_count,' +
       'name,noreply_count,owner,parent_group,place,start_time,' +
       'ticket_uri,timezone,type,updated_time' +
-      '&access_token=' + @access_token)
-    Event.from_facebook(response)
+      '&access_token=' + @user.oauth_token)
   end
 
   private
   def process_events(events)
     events.each do |e|
-      get_event(e['id'])
+      Event.from_facebook(get_event(e['id']), @user.is_approved)
     end
   end
 

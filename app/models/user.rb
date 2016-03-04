@@ -13,4 +13,8 @@ class User < ActiveRecord::Base
       user.save!
     end
   end
+
+  def self.with_valid_token
+    User.where('oauth_expires_at > ?', Time.now)
+  end
 end

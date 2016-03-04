@@ -5,6 +5,7 @@ ActiveAdmin.register User do
 
   index do
     column :name
+    column :auto_publish
     column :created_at
     column :updated_at
     actions

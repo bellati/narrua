@@ -95,7 +95,7 @@ ActiveRecord::Schema.define(version: 20160304011941) do
     t.datetime "oauth_expires_at"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
-    t.boolean  "auto_publish",     default: true, null: false
+    t.boolean  "is_approved",      default: true, null: false
   end
 
 end

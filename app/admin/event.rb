@@ -16,6 +16,13 @@ ActiveAdmin.register Event do
     link_to 'Approve', approve_admin_event_path(event), method: :put
   end
 
+  member_action :disapprove, method: :put do
+  end
+
+  action_item :disapprove, only: [:show] do
+    link_to 'Disapprove', disapprove_admin_event_path(event), method: :put
+  end
+
   controller do
     def scoped_collection
       Event.all_from_today_or_future
@@ -29,6 +36,17 @@ ActiveAdmin.register Event do
         event.is_approved = true
         event.save!
         redirect_to admin_events_path, notice: 'Event was approved!'
+      end
+    end
+
+    def disapprove
+      event = Event.find(params[:id])
+      if !event.is_approved then
+        redirect_to admin_events_path, alert: 'Event is already disapproved!'
+      else
+        event.is_approved = false
+        event.save!
+        redirect_to admin_events_path, notice: 'Event was disapproved!'
       end
     end
   end
@@ -49,7 +67,13 @@ ActiveAdmin.register Event do
     column :updated_time
     column :created_at
     column :updated_at
-    actions
+    actions defaults: true do |event|
+      if event.is_approved then
+        link_to 'Disapprove', disapprove_admin_event_path(event), method: :put
+      else
+        link_to 'Approve', approve_admin_event_path(event), method: :put
+      end
+    end
   end
 
 end

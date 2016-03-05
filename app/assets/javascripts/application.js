@@ -26,6 +26,7 @@ window.onload = function() {
   switch (pathname) {
     case "":
     case "events": 
+      document.getElementById("menu-context").innerHTML = "HOJE";
       // document.getElementById("nav-a-events").className += " active";
       break;
     case "eventssearch":
@@ -33,9 +34,11 @@ window.onload = function() {
       break;
     case "eventscolaborate":
       document.getElementById('menu-back').className = 'visible';
+      document.getElementById("menu-context").innerHTML = "COLABORAR";
       // document.getElementById("nav-a-colaborate").className += " active";
       break;
     default:
       document.getElementById('menu-back').className = 'visible';
+      document.getElementById("menu-context").innerHTML = "DETALHE";
   }
 }

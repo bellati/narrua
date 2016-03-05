@@ -11,20 +11,31 @@
 // about supported directives.
 //
 
+var showOrHideMenu = function() {
+  var menuButton = document.getElementById('menu-button-a');
+  var menuList = document.getElementById('menu-list');
+  switch (menuButton.className) {
+    case 'unactive': menuButton.className = 'active'; menuList.className = 'opened'; break;
+    case 'active': menuButton.className = 'unactive'; menuList.className = 'closed'; break;
+    default: console.log('undefined');
+  }
+}
+
 window.onload = function() {
   var pathname = window.location.pathname.replace(/\//g, '');
   switch (pathname) {
     case "":
     case "events": 
-      document.getElementById("nav-a-events").className += " active";
+      // document.getElementById("nav-a-events").className += " active";
       break;
     case "eventssearch":
-      document.getElementById("nav-a-search").className += " active";
+      // document.getElementById("nav-a-search").className += " active";
       break;
     case "eventscolaborate":
-      document.getElementById("nav-a-colaborate").className += " active";
+      document.getElementById('menu-back').className = 'visible';
+      // document.getElementById("nav-a-colaborate").className += " active";
       break;
     default:
-      document.getElementById("nav-a-go-back").className = "show";
+      document.getElementById('menu-back').className = 'visible';
   }
 }

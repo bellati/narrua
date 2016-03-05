@@ -12,4 +12,7 @@ class EventsController < ApplicationController
 
   def colaborate
   end
+
+  def about
+  end
 end

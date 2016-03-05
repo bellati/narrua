@@ -1,26 +1,37 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>narrua</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-<div id="events">
-  <ul id="nav">
-    <!-- <li id="li-go-back"><%= link_to "voltar", events_path, id: "nav-a-go-back" %></li> -->
-    <li><%= link_to Time.now.to_datetime.strftime("%d.%m"), events_path, id: "nav-a-events" %></a></li>
-    <!-- <li><%= link_to "busca", search_path, id: "nav-a-search" %></li> -->
-    <!-- <li><%= link_to "colaborar", colaborate_path, id: "nav-a-colaborate" %></li> -->
-  </ul>
-  <div id="logo">
-    <%= link_to(image_tag("narrua_minimal.png", { width: 80 }), events_path) %>
-  </div>
-  <%= yield %>
-</div>
-
-</body>
+  <head>
+    <title>narrua</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div id="fixed-container">
+      <div id="menu">
+        <div id="menu-bar">
+          <div id="menu-button">
+            <a href="#" id="menu-button-a" class="unactive" onclick="showOrHideMenu();return false;"><span class="icon-menu"></span></a>
+          </div>
+          <div id="menu-back" class="hidden">
+            <a href="javascript:history.go(-1)" id="menu-back-button-a"><span class="icon-arrow-left"></span></a>
+          </div>
+        </div>
+        <ul id="menu-list" class="closed">
+          <li class="menu-item"><%= link_to events_path do %><span class="menu-item-label">Hoje</span><% end %></li>
+          <li class="menu-item"><a href="#"><span class="menu-item-label">Em até 1 semana</span></a></li>
+          <li class="menu-item"><a href="#"><span class="menu-item-label">Em até 1 mês</span></a></li>
+          <li class="menu-item"><%= link_to colaborate_path do %><span class="menu-item-label">Colaborar</span><% end %></li>
+          <li class="menu-item"><%= link_to about_path do %><span class="menu-item-label">Sobre</span><% end %></li>
+        </ul>
+      </div>
+    </div>
+    <div id="page-start">
+    </div>
+    <div id="container">
+      <%= yield %>
+    </div>
+  </body>
 </html>

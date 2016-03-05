@@ -1,10 +1,23 @@
-<div class="event">
-  <div class="center ename"><%= @event.name %></div>
-  <div class="center eplacetime"><%= @event.place_name + " - " + @event.start_time.strftime("%Hh") %></div>
-  <%= image_tag @event.cover_source, class: 'eimage' %>
-  <div class="section">
-    <div class="eaddress"><span class="icon icon-location"></span><%= @event.place_location_street %></div>
-    <div class="eattending"><span class="icon icon-man"></span><%= @event.attending_count %></div>
+<div id="event-detail">
+  <div class="event">
+    <div class="date">
+      <%= @event.start_time.strftime("%d.%m.%Y") %>
+    </div>
+    <div class="name">
+      <%= @event.name %>
+    </div>
+    <div class="location-time">
+      <%= @event.place_name + " - " + @event.start_time.strftime("%Hh") %>
+    </div>
+    <%= image_tag @event.cover_source, id: 'image' %>
+    <div class="section"></div>
+      <div id="address-attending">
+        <div id="address"><span class="icon-location"></span><%= @event.place_location_street %></div>
+        <div id="attending"><span class="icon-user"></span><%= @event.attending_count %></div>
+      </div>
+    <div class="section"></div>
+      <div id="description">
+        <%= sanitize @event.description %>
+      </div>
   </div>
-  <div class="edescription"><%= sanitize @event.description %></div>
 </div>

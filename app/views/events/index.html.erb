@@ -1,6 +1,15 @@
-<% @events.each do |e| %>
-  <div class="event">
-    <div class="ename"><%= link_to e.name, event_path(e.id) %></div>
-    <div class="eplacetime"><%= e.place_name + " - " + e.start_time.strftime("%Hh") %></div>
-  </div>
-<% end %>
+<div id="events">
+  <% @events.each do |e| %>
+    <div class="event">
+      <div class="date">
+        <%= e.start_time.strftime("%d.%m.%Y") %>
+      </div>
+      <div class="name">
+        <%= link_to e.name, event_path(e) %>
+      </div>
+      <div class="location-time">
+        <%= e.place_name + " - " + e.start_time.strftime("%Hh") %>
+      </div>
+    </div>
+  <% end %>
+<end>

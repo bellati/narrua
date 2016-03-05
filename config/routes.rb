@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'events/view/:id' => 'events#show', as: :event
   get 'events/search' => 'events#search', as: :search
   get 'events/colaborate' => 'events#colaborate', as: :colaborate
+  get 'about/' => 'events#about', as: :about
 
   # facebook_auth
   get 'auth/:provider/callback' => 'users#create'

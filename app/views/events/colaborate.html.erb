@@ -1,7 +1,12 @@
-<div id="facebook-login">
+<div class="text">
   <% if notice == true then %>
     Obrigado por colaborar! Os eventos que você nos enviou estarão disponíveis nos próximos minutos.
   <% else %>
-    <%= link_to (image_tag "facebook-logo.png", {height: 40, title: "Colaborar utilizando os eventos do seu Facebook"}), "/auth/facebook", id: "sign-in" %>
+    Seja um colaborador! Logue-se com o Facebook e pronto!
+    <br/>
+    <br/>
+    <%= link_to '/auth/facebook' do %>
+      <span class="icon-facebook2"></span>
+    <% end %>
   <% end %>
 </div>

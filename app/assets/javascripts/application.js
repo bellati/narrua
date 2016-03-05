@@ -34,11 +34,11 @@ window.onload = function() {
       break;
     case "eventscolaborate":
       document.getElementById('menu-back').className = 'visible';
-      document.getElementById("menu-context").innerHTML = "COLABORAR";
+      // document.getElementById("menu-context").innerHTML = "COLABORAR";
       // document.getElementById("nav-a-colaborate").className += " active";
       break;
     default:
       document.getElementById('menu-back').className = 'visible';
-      document.getElementById("menu-context").innerHTML = "DETALHE";
+      // document.getElementById("menu-context").innerHTML = "DETALHE";
   }
 }

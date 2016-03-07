@@ -49,6 +49,7 @@ class Event < ActiveRecord::Base
       event.start_time = facebook['start_time']
       event.timezone = facebook['timezone']
       event.updated_time = facebook['updated_time']
+      set_duration_in_days(facebook['start_time'], facebook['end_time'])
       event.save!
     end
   end
@@ -117,6 +118,14 @@ class Event < ActiveRecord::Base
         self.place_location_street = self.place_name
     else
         self.place_location_street = place_location_street
+    end
+  end
+
+  def set_duration_in_days(start_time, end_time)
+    if end_time.nil?
+      self.duration_in_days = 0
+    else 
+      self.duration_in_days = (end_time - start_time).to_i
     end
   end
 end

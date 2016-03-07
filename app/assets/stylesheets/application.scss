@@ -41,11 +41,11 @@ $font-biggest: 25px;
   /* end papua nova guinea */
 
   /* begin my little projects */
-$palette-first: #354458;
-$palette-second: #3a9ad9;
-$palette-third: #29aba4;
-$palette-fourth: #e9e0d6;
-$palette-fifth: #eb7260;
+// $palette-first: #354458;
+// $palette-second: #3a9ad9;
+// $palette-third: #29aba4;
+// $palette-fourth: #e9e0d6;
+// $palette-fifth: #eb7260;
   /* end my little projects */
 
   /* begin alexandra kuban web design */
@@ -64,6 +64,13 @@ $palette-fifth: #eb7260;
 // $palette-fifth: #de5842; 
   /* end gravual */ 
 
+  /* begin original */
+$palette-first: #262626;
+$palette-second: #ff6600;
+$palette-third: #313131;
+$palette-fourth: #e7e7e7;
+$palette-fifth: #8b8b8b;
+  /* end original */
 /* end colors */
 
 /* begin easy access variables */
@@ -73,10 +80,11 @@ $background-color: $palette-first;
 $color: $palette-fourth;
 $color-detail: $palette-fifth;
 $menu-background-color: $palette-first;
-$menu-border: $palette-fifth;
-$menu-color: $palette-fifth;
-$color-active: $palette-fifth;
+$menu-border: $palette-third;
+$menu-color: $color;
+$color-active: $palette-second;
 $color-unactive: $palette-fourth;
+$color-hover: $palette-second;
 
 /* end easy access variables */
 
@@ -194,8 +202,11 @@ a {
           font-size: $header-height / 2.0;
           margin: 0 0 0 10px;
         }
-        a:hover, a:active {
-          color: $color-detail;
+        a:active {
+          color: $color-active;
+        }
+        a:hover {
+          color: $color-hover;
         }
       }
     }
@@ -203,10 +214,10 @@ a {
       clear: both;
       width: $width;
       overflow: hidden;
-      -webkit-transition: all 0.4s ease-out;
-      -moz-transition: all 0.4s ease-out;
-      -o-transition: all 0.4s ease-out;
-      transition: all 0.4s ease-out;
+      -webkit-transition: max-height 0.2s ease-out, opacity 1s ease-out;
+      -moz-transition: max-height 0.2s ease-out, opacity 1s ease-out;
+      -o-transition: max-height 0.2s ease-out, opacity 1s ease-out;
+      transition: max-height 0.2s ease-out, opacity 1s ease-out;
       border-bottom: 2px solid $menu-border;
       .menu-item {
         line-height: $header-height / 1.7;
@@ -214,6 +225,8 @@ a {
         text-align: right;
         background-color: $menu-background-color;
         border-top: 2px solid $menu-border;
+        border-left: 2px solid $menu-border;
+        border-right: 2px solid $menu-border;
         a {
           display: block;
           width: 100%;
@@ -224,8 +237,15 @@ a {
             border-bottom: 2px solid $menu-color;
           }
         }
-        a:hover, a:active {
+        a:hover {
           .menu-item-label {
+            border-bottom: none;
+          }
+        }
+
+        a:active {
+          .menu-item-label {
+            color: $color-active;
             border-bottom: none;
           }
         }
@@ -374,7 +394,7 @@ a {
       color: $color;
     }
     a:active {
-      color: $color-detail;
+      color: $color-active;
     }
   }
 }

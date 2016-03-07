@@ -22,7 +22,7 @@ ActiveAdmin.register Event do
 
   controller do
     def scoped_collection
-      Event.all_from_today_or_future
+      Event.all_current_or_future
     end
 
     def dis_approve

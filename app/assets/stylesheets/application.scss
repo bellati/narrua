@@ -176,11 +176,14 @@ a {
             text-transform: uppercase;
             font-size: $header-height / 2.0;
           }
-          #menu-context {
-            @extend #menu-icon;
-            font-size: $font-small;
-          }
         }
+      }
+      #menu-context {
+        text-align: right;
+        font-size: $font-small;
+        float: right;
+        height: $header-height;
+        margin: 5px 2px 0 0;
       }
       #menu-back {
         height: $header-height;

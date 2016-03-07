@@ -18,14 +18,18 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @context = 'DETALHE'
   end
 
   def search
+    @context = 'BUSCA'
   end
 
   def colaborate
+    @context = 'COLABORAR'
   end
 
   def about
+    @context = 'SOBRE'
   end
 end

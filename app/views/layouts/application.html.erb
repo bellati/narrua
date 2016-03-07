@@ -23,8 +23,8 @@
         </div>
         <ul id="menu-list" class="closed">
           <li class="menu-item"><%= link_to events_path do %><span class="menu-item-label">Hoje</span><% end %></li>
-          <li class="menu-item"><a href="#"><span class="menu-item-label">Semana</span></a></li>
-          <li class="menu-item"><a href="#"><span class="menu-item-label">Mês</span></a></li>
+          <li class="menu-item"><%= link_to events_path(time_frame: 1) do %><span class="menu-item-label">Semana</span><% end %></li>
+          <li class="menu-item"><%= link_to events_path(time_frame: 2) do %><span class="menu-item-label">Mês</span><% end %></li>
           <!-- <li class="menu-item"><%= link_to colaborate_path do %><span class="menu-item-label">Colaborar</span><% end %></li> -->
           <li class="menu-item"><%= link_to about_path do %><span class="menu-item-label">Sobre</span><% end %></li>
         </ul>

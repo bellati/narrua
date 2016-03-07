@@ -75,7 +75,16 @@ class Event < ActiveRecord::Base
                 upper_limit, now.to_datetime).order(attending_count: :desc)
   end
 
-  def self.all_from_today_or_future
+  def self.all_from_current_week
+    Event.all_from_today_to_known_future((now.to_datetime + 1 + ((6 - now.to_datetime.wday) % 7)).at_end_of_day)
+  end
+
+  def self.all_from_next_30_days
+    Event.all_from_today_to_known_future((now.to_datetime + 30.day).at_end_of_day)
+  end
+
+
+  def self.all_current_or_future
     now = Time.now
     lower_limit = nil
     if now.hour >= 0 and now.hour <= 6 then
@@ -88,7 +97,7 @@ class Event < ActiveRecord::Base
             lower_limit, now.to_datetime)
   end
 
-  def self.all_from_today_or_future_not_approved
+  def self.all_current_or_future_not_approved
     now = Time.now
     lower_limit = nil
     if now.hour >= 0 and now.hour <= 6 then
@@ -127,5 +136,24 @@ class Event < ActiveRecord::Base
     else 
       self.duration_in_days = (end_time - start_time).to_i
     end
+  end
+
+  private
+  def self.all_from_today_to_known_future(lower_limit, upper_limit)
+    now = Time.now
+    lower_limit = nil
+
+    # se for entre meia-noite e seis da manhã...
+    if now.hour >= 0 and now.hour <= 6 then
+      # os eventos de ontem são mostrados até 6 horas da manhã de hoje
+      lower_limit = now.to_datetime.yesterday.at_beginning_of_day
+    else
+      lower_limit = now.to_datetime.at_beginning_of_day
+    end
+    Event.where('is_approved = true AND ' +
+                '((end_time IS NULL AND start_time >= ? AND start_time <= ?) OR ' + 
+                '(end_time IS NOT NULL AND start_time <= ? AND end_time >= ?))', 
+                lower_limit, upper_limit,
+                upper_limit, now.to_datetime).order(start_time: :asc, attending_count: :desc)
   end
 end

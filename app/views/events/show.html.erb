@@ -1,7 +1,11 @@
 <div id="event-detail">
   <div class="event">
     <div class="date">
-      <%= @event.start_time.strftime("%d.%m.%Y") %>
+      <% if @event.duration_in_days < 1 %>
+        <%= @event.start_time.strftime("%d.%m.%Y") %>
+      <% else %>
+        <%= @event.start_time.strftime("%d.%m.%Y") + ' - ' + @event.end_time.strftime("%d.%m.%Y") %>
+      <% end %>
     </div>
     <div class="name">
       <%= @event.name %>

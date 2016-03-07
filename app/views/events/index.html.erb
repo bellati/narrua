@@ -2,7 +2,11 @@
   <% @events.each do |e| %>
     <div class="event">
       <div class="date">
-        <%= e.start_time.strftime("%d.%m.%Y") %>
+        <% if e.duration_in_days < 1 %>
+          <%= e.start_time.strftime("%d.%m.%Y") %>
+        <% else %>
+          <%= e.start_time.strftime("%d.%m.%Y") + ' - ' + e.end_time.strftime("%d.%m.%Y") %>
+        <% end %>
       </div>
       <div class="name">
         <%= link_to e.name, event_path(e) %>

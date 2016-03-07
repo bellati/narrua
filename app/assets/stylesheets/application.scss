@@ -243,6 +243,7 @@ a {
         }
         a:hover {
           .menu-item-label {
+            color: $color-active;
             border-bottom: none;
           }
         }

@@ -214,13 +214,9 @@ a {
       clear: both;
       width: $width;
       overflow: hidden;
-      -webkit-transition: max-height 0.2s ease-out, opacity 0.1s ease-out;
-      -moz-transition: max-height 0.2s ease-out, opacity 0.1s ease-out;
-      -o-transition: max-height 0.2s ease-out, opacity 0.1s ease-out;
-      transition: max-height 0.7s ease-out, opacity 0.1s ease-out;
-      -webkit-transition: all 0.2s ease-out;
-      -moz-transition: all 0.2s ease-out;
-      -o-transition: all 0.2s ease-out;
+      -webkit-transition: all 0.4s ease-out;
+      -moz-transition: all 0.4s ease-out;
+      -o-transition: all 0.4s ease-out;
       transition: all 0.4s ease-out;
       border-bottom: 2px solid $menu-border;
       .menu-item {
@@ -241,14 +237,7 @@ a {
             border-bottom: 2px solid $menu-color;
           }
         }
-        a:hover {
-          .menu-item-label {
-            color: $color-active;
-            border-bottom: none;
-          }
-        }
-
-        a:active {
+        a:hover, a:active {
           .menu-item-label {
             color: $color-active;
             border-bottom: none;

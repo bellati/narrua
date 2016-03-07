@@ -49,7 +49,7 @@ class Event < ActiveRecord::Base
       event.start_time = facebook['start_time']
       event.timezone = facebook['timezone']
       event.updated_time = facebook['updated_time']
-      set_duration_in_days(facebook['start_time'], facebook['end_time'])
+      event.set_duration_in_days(facebook['start_time'], facebook['end_time'])
       event.save!
     end
   end
@@ -136,7 +136,7 @@ class Event < ActiveRecord::Base
     if end_time.nil?
       self.duration_in_days = 0
     else 
-      self.duration_in_days = (end_time - start_time).to_i
+      self.duration_in_days = (DateTime.parse(end_time) - DateTime.parse(start_time)).to_i
     end
   end
 
